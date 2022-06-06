@@ -6,6 +6,7 @@ This module defines the floor function.
 
 import math
 
+
 def floor (n: float) -> int:
     """
     Returns the floor of n.
