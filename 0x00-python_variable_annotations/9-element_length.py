@@ -4,7 +4,7 @@
 This module defines the element_length function.
 """
 
-from typing import List, Iterable, Sequence
+from typing import List, Iterable, Sequence, Tuple
 
 
 def element_length(lst: Iterable[Sequence]) -> List[Tuple[Sequence, int]]:
