@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 """
 This module defines the function safe_first_element.
 """
