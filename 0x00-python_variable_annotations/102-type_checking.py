@@ -6,9 +6,9 @@ This module defines the function zoom_array.
 
 from typing import Tuple, List
 
-def zoom_array(lst: Tuple, factor: int = 2) -> Tuple:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """ Using mypy to find whats wrong."""
-    zoomed_in: Tuple = [
+    zoomed_in: List = [
         item for item in lst
         for i in range(factor)
     ]
