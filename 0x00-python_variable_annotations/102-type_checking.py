@@ -4,9 +4,9 @@
 This module defines the function zoom_array.
 """
 
-from typing import Tuple, List, Any
+from typing import Tuple, List
 
-def zoom_array(lst: List, factor: Any = 2) -> List:
+def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """ Using mypy to find whats wrong."""
     zoomed_in: List = [
         item for item in lst
@@ -19,4 +19,4 @@ array = [12, 72, 91]
 
 zoom_2x = zoom_array(array)
 
-zoom_3x = zoom_array(array, 3.0)
+zoom_3x = zoom_array(array, 3)
