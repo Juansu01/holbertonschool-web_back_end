@@ -2,7 +2,7 @@
 
 ### Learning objectives of this project.
 
-- async and await syntax
+- ```python async``` and ```python await``` syntax
 - How to execute an async program with asyncio
 - How to run concurrent coroutines
 - How to create asyncio tasks
