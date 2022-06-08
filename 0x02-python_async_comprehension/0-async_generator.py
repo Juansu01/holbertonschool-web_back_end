@@ -5,7 +5,7 @@ This module defines the async_generator coroutine.
 
 import asyncio
 from random import uniform
-from typing import Generator
+from typing import AsyncGenerator
 
 
 async def async_generator() -> AsyncGenerator[float, None]:
