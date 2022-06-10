@@ -35,7 +35,10 @@ class LRUCache(BaseCaching):
 
     def get(self, key):
         """Returns item from cache using key."""
-        return self.cache_data.get(key)
+        item = self.cache_data.get(key)
+        if item:
+            self.mv_last_list(key)
+        return item
 
     def mv_last_list(self, item):
         """Moves item to the last index of list."""
