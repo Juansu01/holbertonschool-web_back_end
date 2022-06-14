@@ -51,7 +51,7 @@ class Server:
         current dataset.
         """
 
-        data_set = self.__dataset
+        data_set = self.get_page(page, page_size)
         if data_set:
             set_size = len(data_set)
         else:
