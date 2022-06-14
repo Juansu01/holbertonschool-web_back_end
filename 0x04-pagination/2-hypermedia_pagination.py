@@ -51,18 +51,16 @@ class Server:
         current dataset.
         """
 
-        data_set = self.get_page(page, page_size)
-        if data_set:
-            set_size = len(data_set)
-        else:
-            set_size = 0
-
-        total_pages = math.ceil(set_size / page_size) if data_set else 0
+        data_set = self.dataset()
+        data = self.get_page(page, page_size)
+        data_set_size = len(data_set) if data_set else 0
+        total_pages = math.ceil(data_set_size / page_size) if data_set else 0
+        page_size = len(data) if data else 0
 
         return {
             'page_size': page_size,
             'page': page,
-            'data': data_set,
+            'data': data,
             'next_page': page + 1 if page < total_pages else None,
             'prev_page': page - 1 if page > 1 else None,
             'total_pages': total_pages,
