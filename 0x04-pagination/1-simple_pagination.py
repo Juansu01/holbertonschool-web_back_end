@@ -39,8 +39,8 @@ class Server:
 
         self.dataset()
 
-        if self.__dataset:
-            first_idx, second_idx = index_range(page, page_size)
-            return self.__dataset[first_idx, second_idx]
+        if self.__dataset is None:
+            return []
 
-        return []
+        first_idx, second_idx = index_range(page, page_size)
+        return self.__dataset[first_idx, second_idx]
