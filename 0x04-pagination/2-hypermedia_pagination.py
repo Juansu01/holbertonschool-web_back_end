@@ -53,9 +53,9 @@ class Server:
 
         data_set = self.__dataset
         if data_set:
-            set_size = 0
-        else:
             set_size = len(data_set)
+        else:
+            set_size = 0
 
         total_pages = math.ceil(set_size / page_size) if data_set else 0
 
