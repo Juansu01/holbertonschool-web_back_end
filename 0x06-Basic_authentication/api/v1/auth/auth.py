@@ -4,6 +4,7 @@ This module defines the auth class.
 """
 from flask import request
 from typing import List, TypeVar
+import re
 
 
 class Auth:
@@ -21,8 +22,24 @@ class Auth:
         if excluded_paths is None or len(excluded_paths) == 0:
             return True
 
+        route_names = ["users", "status", "stats"]
+
+        tmp_exlcluded_paths = []
+
+        for _path in excluded_paths:
+
+            if "*" in _path:
+                route = _path.split("/")[3]
+                route = route.replace("*", "")
+                for name in route_names:
+                    if name.startswith(route):
+                        tmp_exlcluded_paths.append(f"/api/v1/{name}/")
+
         if path[-1] != '/':
             path += '/'
+
+        if path in tmp_exlcluded_paths:
+            return False
 
         if path in excluded_paths:
             return False
