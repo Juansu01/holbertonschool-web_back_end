@@ -6,6 +6,8 @@ This module defines the basic auth class.
 from base64 import encode
 from api.v1.auth.auth import Auth
 from base64 import b64decode
+from typing import TypeVar
+from models.user import User
 
 
 class BasicAuth(Auth):
@@ -67,3 +69,25 @@ class BasicAuth(Auth):
         split_credentials = decoded_base64_authorization_header.split(':')
 
         return (split_credentials[0], split_credentials[1])
+
+    def user_object_from_credentials(self,
+                                     user_email: str,
+                                     user_pwd: str) -> TypeVar('User'):
+        """
+        Returns the User instance based on his email
+        and password.
+        """
+
+        if type(user_email) != str or type(user_pwd) != str:
+            return None
+
+        try:
+            users_with_email = User.search({"email": user_email})
+        except Exception:
+            return None
+
+        for user in users_with_email:
+            if user.is_valid_password(user_pwd):
+                return user
+
+        return None
