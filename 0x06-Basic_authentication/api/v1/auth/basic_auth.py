@@ -66,7 +66,7 @@ class BasicAuth(Auth):
         if ':' not in decoded_base64_authorization_header:
             return (None, None)
 
-        split_credentials = decoded_base64_authorization_header.split(':')
+        split_credentials = decoded_base64_authorization_header.split(':', 1)
 
         return (split_credentials[0], split_credentials[1])
 
