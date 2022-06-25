@@ -35,7 +35,7 @@ class Auth:
             if path_ != "" and path_ != "v1" and path_ != "api":
                 for name in route_names:
                     if name.startswith(path_):
-                        new_path = f"/api/v1/{name}"
+                        new_path = f"/api/v1/{name}/"
 
         for _path in excluded_paths:
 
