@@ -91,3 +91,30 @@ class BasicAuth(Auth):
                 return user
 
         return None
+
+    def current_user(self, request=None) -> TypeVar('User'):
+        """
+        Protecting API fully using this method.
+        """
+
+        auth_header = self.authorization_header(request)
+
+        if auth_header is None:
+            return None
+
+        encode_header = self.extract_base64_authorization_header(auth_header)
+
+        if encode_header is None:
+            return None
+
+        decode_header = self.decode_base64_authorization_header(encode_header)
+
+        if decode_header is None:
+            return None
+
+        email, password = self.extract_user_credentials(decode_header)
+
+        if email and password:
+            return self.user_object_from_credentials(email, password)
+
+        return None
