@@ -26,20 +26,21 @@ class Auth:
 
         tmp_exlcluded_paths = []
 
+        for _path in excluded_paths:
+
+            if "*" in _path:
+                route = _path.split("/")[3]
+                route = route.replace("*", "")
+                for name in route_names:
+                    if name.startswith(route):
+                        tmp_exlcluded_paths.append(f"/api/v1/{name}/")
+
+
         if path[-1] != '/':
             path += '/'
 
-        for _path in excluded_paths:
-
-            if len(_path) == 0:
-                continue
-
-            if "*" in _path:
-                if path == _path:
-                    return False
-            else:
-                if _path[:-1] == path[:len(_path) - 1]:
-                    return False
+        if path in tmp_exlcluded_paths:
+            return False
 
         if path in excluded_paths:
             return False
