@@ -52,7 +52,7 @@ class Auth:
 
             if new_path in excluded_paths:
                 return False
-        elif excluded_paths:
+        elif tmp_exlcluded_paths:
             if path in tmp_exlcluded_paths:
                 return False
 
