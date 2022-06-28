@@ -39,6 +39,8 @@ class Auth:
         if path in excluded_paths:
             return False
 
+        return True
+
     def authorization_header(self, request=None) -> str:
         """
         This method returns None
