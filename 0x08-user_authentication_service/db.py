@@ -52,7 +52,6 @@ class DB:
         if not kwargs:
             raise InvalidRequestError
 
-        columns = User.__table__columns.keys()
 
         user = self._session.query(User).filter_by(**kwargs).first()
 
