@@ -17,25 +17,9 @@ class Auth:
         """
         Require auth, returns false.
         """
-        if path is None:
-            return True
-        if excluded_paths is None or len(excluded_paths) == 0:
-            return True
-
         route_names = ["users", "status", "stats"]
 
         tmp_exlcluded_paths = []
-
-        if path[-1] != '/':
-            path += '/'
-
-        new_path = False
-
-        for path_ in path:
-            if path_ != "" and path_ != "v1" and path_ != "api":
-                for name in route_names:
-                    if name.startswith(path_):
-                        new_path = f"/api/v1/{name}/"
 
         for _path in excluded_paths:
 
@@ -46,20 +30,14 @@ class Auth:
                     if name.startswith(route):
                         tmp_exlcluded_paths.append(f"/api/v1/{name}/")
 
-        if new_path and tmp_exlcluded_paths:
-            if new_path in tmp_exlcluded_paths:
-                return False
+        if path[-1] != '/':
+            path += '/'
 
-            if new_path in excluded_paths:
-                return False
-        elif tmp_exlcluded_paths:
-            if path in tmp_exlcluded_paths:
-                return False
+        if path in tmp_exlcluded_paths:
+            return False
 
         if path in excluded_paths:
             return False
-
-        return True
 
     def authorization_header(self, request=None) -> str:
         """
