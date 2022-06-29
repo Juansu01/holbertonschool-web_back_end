@@ -8,6 +8,7 @@ from db import DB
 from user import User
 from sqlalchemy.orm.exc import NoResultFound
 import uuid
+from typing import Union
 
 
 def _hash_password(password: str) -> str:
@@ -80,3 +81,19 @@ class Auth:
         self._db.update_user(user.id, session_id=_id)
 
         return _id
+
+    def get_user_from_session_id(self, session_id: str) -> Union[str, None]:
+        """
+        Retrieves user from session id, returns the user object,
+        None otherwise.
+        """
+
+        if session_id:
+            try:
+                user = self._db.find_user_by(session_id=session_id)
+            except NoResultFound:
+                return None
+
+            return user
+
+        return None
