@@ -3,8 +3,6 @@
 This module defines the routes for our API.
 """
 
-
-import json
 from flask import Flask, jsonify, request, abort
 from auth import Auth
 from flask import redirect
