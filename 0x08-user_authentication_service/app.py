@@ -6,7 +6,7 @@ This module defines the routes for our API.
 
 from flask import Flask, jsonify, request, abort
 from auth import Auth
-
+from flask import redirect
 
 AUTH = Auth()
 app = Flask(__name__)
@@ -58,6 +58,27 @@ def login() -> str:
 
     else:
         abort(401)
+
+
+@app.route('/sessions', methods=['DELETE'], strict_slashes=False)
+def logout() -> str:
+    """
+    API logout endpoint.
+    """
+
+    session_id = request.cookies.get("session_id")
+
+    if session_id:
+        user = AUTH.get_user_from_session_id(session_id=session_id)
+
+        if user:
+            AUTH.destroy_session(user.id)
+        else:
+            abort(403)
+    else:
+        abort(403)
+
+    return redirect('/')
 
 
 if __name__ == "__main__":
