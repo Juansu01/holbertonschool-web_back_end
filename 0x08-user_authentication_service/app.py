@@ -102,7 +102,8 @@ def user_profile() -> str:
 @app.route('/reset_password', methods=['POST'], strict_slashes=False)
 def reset_password() -> str:
     """
-    Generates a token for a password reset if account is found.
+    Generates a token for a password
+    reset if account is found.
     """
 
     try:
@@ -115,9 +116,9 @@ def reset_password() -> str:
     except KeyError:
         abort(403)
 
-    return jsonify({"email": email,
-                    "reset_token": token
-                    }), 200
+    res = {"email": email, "reset_token": token}
+
+    return jsonify(res), 200
 
 
 if __name__ == "__main__":
