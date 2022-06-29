@@ -4,7 +4,6 @@ This module defines the routes for our API.
 """
 
 
-from urllib import response
 from flask import Flask, jsonify, request, abort
 from auth import Auth
 
@@ -54,7 +53,7 @@ def login() -> str:
             "email": email,
             "message": "logged in"
         })
-        response.set_cookie("session_id", sess_id)
+        res.set_cookie("session_id", sess_id)
         return res
 
     else:
