@@ -105,9 +105,9 @@ def reset_password() -> str:
     Generates a token for a password
     reset if account is found.
     """
-
+    email = request.form.get("email")
     try:
-        email = request.form.get["email"]
+
         reset_token = AUTH.get_reset_password_token(email)
         my_dict = {"email": email, "reset_token": reset_token}
         return jsonify(my_dict), 200
