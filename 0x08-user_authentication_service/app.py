@@ -4,6 +4,7 @@ This module defines the routes for our API.
 """
 
 
+import json
 from flask import Flask, jsonify, request, abort
 from auth import Auth
 from flask import redirect
@@ -79,6 +80,25 @@ def logout() -> str:
         abort(403)
 
     return redirect('/')
+
+
+@app.route('/profile', methods=['GET'], strict_slashes=False)
+def user_profile() -> str:
+    """
+    Responds with 200 status if user exists.
+    """
+
+    session_id = request.cookies.get("session_id")
+
+    if session_id:
+        user = AUTH.get_user_from_session_id(session_id=session_id)
+
+        if user:
+            return jsonify({"email": user.email}), 200
+        else:
+            abort(403)
+    else:
+        abort(403)
 
 
 if __name__ == "__main__":
