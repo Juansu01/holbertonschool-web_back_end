@@ -107,18 +107,12 @@ def reset_password() -> str:
     """
 
     try:
-        email = request.form["email"]
-    except KeyError:
+        email = request.form.get["email"]
+        reset_token = AUTH.get_reset_password_token(email)
+        my_dict = {"email": email, "reset_token": reset_token}
+        return jsonify(my_dict), 200
+    except Exception:
         abort(403)
-
-    try:
-        token = AUTH.get_reset_password_token(email)
-    except KeyError:
-        abort(403)
-
-    res = {"email": email, "reset_token": token}
-
-    return jsonify(res), 200
 
 
 if __name__ == "__main__":
