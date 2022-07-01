@@ -36,7 +36,6 @@ def register_user(email: str, password: str) -> None:
     """
 
     data = create_data(email, password)
-    print(data)
     res = requests.post(f"{URL}/users", data=data)
     expected = {"email": email, "message": "user created"}
 
