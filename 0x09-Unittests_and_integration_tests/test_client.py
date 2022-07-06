@@ -40,12 +40,12 @@ class TestGithubOrgClient(unittest.TestCase):
     @patch('client.get_json')
     def test_public_repos(self, json_mock):
         """
-        Test that the list of repos is what you expect from the chosen payload.
+        Test that the list of repos is what
+        you expect from the chosen payload.
         """
         payload = [
             {"name": "Twitter"},
-            {"name": "Google"},
-            {"name": "Instagram"}
+            {"name": "Google"}
         ]
 
         json_mock.return_value = payload
