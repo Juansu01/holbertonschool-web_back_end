@@ -53,6 +53,7 @@ class TestGithubOrgClient(unittest.TestCase):
         with patch("client.GithubOrgClient._public_repos_url",
                    new_callable=PropertyMock) as mocking:
 
+            mocking.return_value = "help"
             test_obj = GithubOrgClient("test")
             res = test_obj.public_repos()
 
