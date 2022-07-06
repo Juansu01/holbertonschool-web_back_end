@@ -65,7 +65,7 @@ class TestMemoize(unittest.TestCase):
     Testing class for Memoize.
     """
 
-    def test_memoize():
+    def test_memoize(self):
         """
         Memoize test method.
         """
