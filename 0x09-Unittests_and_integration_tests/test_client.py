@@ -26,6 +26,17 @@ class TestGithubOrgClient(unittest.TestCase):
         self.assertEqual(test_cl.org, mock.return_value)
         mock.assert_called_once()
 
+    def test_public_repos_url(self):
+        """
+        Using patch context manager to patch and return
+        a known payload.
+        """
+        with patch("client.GithubOrgClient.org",
+                    new_callable= PropertyMock) as mocking:
+            mocking.return_value = {"repos_url": "World"}
+            test_obj = GithubOrgClient("test")
+            self.assertEqual(test_obj._public_repos_url, "World")
+
 
 if __name__ == '__main__':
     unittest.main()
