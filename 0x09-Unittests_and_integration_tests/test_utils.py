@@ -60,5 +60,32 @@ class TestGetJson(unittest.TestCase):
         patch_obj.stop()
 
 
+class TestMemoize(unittest.TestCase):
+    """
+    Testing class for Memoize.
+    """
+
+    def test_memoize():
+        """
+        Memoize test method.
+        """
+        class TestClass:
+            """
+            TestClass definition.
+            """
+            def a_method(self):
+                return 42
+
+            @memoize
+            def a_property(self):
+                return self.a_method()
+
+        with patch.object(TestClass, 'a_method') as mock:
+            test_cls = TestClass()
+            test_cls.a_property
+            test_cls.a_property
+            mock.assert_called_once()
+
+
 if __name__ == '__main__':
     unittest.main()
