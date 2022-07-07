@@ -27,7 +27,7 @@ def home() -> str:
     """
     Home route rendering simple html.
     """
-    return render_template("0-index.html")
+    return render_template("4-index.html")
 
 
 @babel.localeselector
@@ -35,11 +35,12 @@ def get_locale() -> str:
     """
     Determines the best match with our supported languages
     """
+
     locale = request.args.get("locale")
     if locale and locale in app.config["LANGUAGES"]:
         return locale
-
-    return request.accept_languages.best_match(app.config["LANGUAGES"])
+    else:
+        return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
 if __name__ == "__main__":
