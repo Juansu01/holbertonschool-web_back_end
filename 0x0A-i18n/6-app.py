@@ -33,11 +33,13 @@ def get_user() -> Union[dict, None]:
     """
     Gets user by id and returns user if found.
     """
-    user_id = request.args.get("login_as")
-    if user_id:
+
+    try:
+        user_id = request.args.get("login_as")
         user = users[int(user_id)]
-    else:
-        return None
+    except Exception:
+        user = None
+
     return user
 
 
