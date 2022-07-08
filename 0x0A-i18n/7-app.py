@@ -46,7 +46,7 @@ def get_timezone() -> str:
             timezone_py = pytz.timezone(timezone)
         elif g.user and g.user.get("timezone"):
             timezone = g.user.get("timezone")
-            pytz.timezone(timezone)
+            timezone_py = pytz.timezone(timezone)
         else:
             timezone = app.config["BABEL_DEFAULT_TIMEZONE"]
             timezone_py = pytz.timezone(timezone)
