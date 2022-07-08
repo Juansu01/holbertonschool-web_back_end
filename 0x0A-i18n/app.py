@@ -89,7 +89,7 @@ def home() -> str:
     timezone = get_timezone()
     pytz_object = pytz.timezone(timezone)
     current_time = format_datetime(datetime=datetime.now(pytz_object))
-    return render_template("index.html", current_time)
+    return render_template("index.html", current_time=current_time)
 
 
 @babel.localeselector
