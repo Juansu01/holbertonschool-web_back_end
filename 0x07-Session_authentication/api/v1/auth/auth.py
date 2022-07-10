@@ -19,28 +19,25 @@ class Auth:
         """
         route_names = ["users", "status", "stats"]
 
-        tmp_exlcluded_paths = []
-
-        for _path in excluded_paths:
-
-            if "*" in _path:
-                route = _path.split("/")[3]
-                route = route.replace("*", "")
-                for name in route_names:
-                    if name.startswith(route):
-                        tmp_exlcluded_paths.append(f"/api/v1/{name}/")
-
-        if path[-1] != '/':
-            path += '/'
-
-        if path in tmp_exlcluded_paths:
-            return False
-
-        if path in excluded_paths:
-            return False
-
-        if "uas" in path:
+        if path is None or excluded_paths is None or excluded_paths == []:
             return True
+
+        l_path = len(path)
+        slash_path = True if path[l_path - 1] == '/' else False
+        for exc in excluded_paths:
+            l_exc = len(exc)
+            slash_exc = True if exc[l_exc - 1] == '/' else False
+
+            if slash_path and not slash_exc:
+                path = path[:-1]
+            elif not slash_path and slash_exc:
+                path += '/'
+
+            if path == exc:
+                return False
+
+        return True
+
 
     def authorization_header(self, request=None) -> str:
         """
