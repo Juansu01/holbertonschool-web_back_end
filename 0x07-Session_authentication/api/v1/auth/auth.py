@@ -5,6 +5,7 @@ This module defines the auth class.
 from flask import request
 from typing import List, TypeVar
 import re
+import os
 
 
 class Auth:
@@ -38,7 +39,6 @@ class Auth:
 
         return True
 
-
     def authorization_header(self, request=None) -> str:
         """
         This method returns None
@@ -53,3 +53,18 @@ class Auth:
         This method also returns None
         """
         return None
+
+    def session_cookie(self, request=None):
+        """Returns session id for session_cookie"""
+
+        if request is None:
+            return None
+
+        SESSION_NAME = os.getenv("SESSION_NAME")
+
+        if SESSION_NAME is None:
+            return None
+
+        session_id = request.cookies.get(SESSION_NAME)
+
+        return session_id
