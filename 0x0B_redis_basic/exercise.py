@@ -4,8 +4,41 @@ Module for Redis basic project.
 """
 
 import redis
-from typing import Union, Optional
+from typing import Union, Optional, Callable
 import uuid
+from functools import wraps
+
+
+def count_calls(method: Callable) -> Callable:
+    """
+    Counts how many times method has been called.
+    """
+
+    key = method.__qualname__
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """
+        Decorator wrapper.
+        """
+
+        self._redis.incr(key)
+        return method(self, *args, **kwargs)
+
+    return wrapper
+
+
+def call_history(method: Callable) -> Callable:
+    """
+    Decorator that stores history of inputs and
+    outputs.
+    """
+
+    @wraps(method)
+    def wrapper(self, *args, **kwargs):
+        """
+        Decorator wrapper.
+        """
 
 
 class Cache():
@@ -21,6 +54,7 @@ class Cache():
         self._redis = redis.Redis()
         self._redis.flushdb()
 
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         """
         Takes a data argument and returns a string
