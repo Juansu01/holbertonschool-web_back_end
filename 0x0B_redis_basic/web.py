@@ -9,7 +9,7 @@ from typing import Callable
 from functools import wraps
 
 
-_redis = redis
+_redis = redis.Redis()
 
 
 def request_counter(method: Callable) -> Callable:
