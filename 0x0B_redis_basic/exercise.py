@@ -40,7 +40,7 @@ def call_history(method: Callable) -> Callable:
         Decorator wrapper.
         """
         inp = str(args)
-        self._redis.rpush(method.__qualname__ + ":inputs", input)
+        self._redis.rpush(method.__qualname__ + ":inputs", inp)
 
         outp = str(method(self, *args, **kwargs))
         self._redis.rpush(method.__qualname__ + ":outputs", outp)
