@@ -5,7 +5,7 @@ export default function createIteratorObject(report) {
     return iterable;
   }
 
-  if (typeof report.allEmployees !== "object") {
+  if (typeof report.allEmployees !== 'object') {
     return iterable;
   }
 
