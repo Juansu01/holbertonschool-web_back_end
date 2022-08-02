@@ -1,12 +1,12 @@
 function getResponseFromAPI() {
     return new Promise((resolve, reject) => {
-        /*eslint-disable*/
+        /* eslint-disable */
         if (true) {
             resolve();
         } else {
             reject();
         }
-        /*eslint-enable*/
+        /* eslint-enable */
     });
 }
 
