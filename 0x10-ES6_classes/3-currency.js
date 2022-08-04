@@ -11,7 +11,7 @@ class Currency {
 
   set code(code) {
     if (typeof code === 'string') {
-        this._code = code;
+      this._code = code;
     }
   }
 
@@ -22,7 +22,7 @@ class Currency {
 
   set name(name) {
     if (typeof name === 'string') {
-        this._name = name;
+      this._name = name;
     }
   }
 
