@@ -15,7 +15,6 @@ class Currency {
     }
   }
 
-
   get name() {
     return this._name;
   }
