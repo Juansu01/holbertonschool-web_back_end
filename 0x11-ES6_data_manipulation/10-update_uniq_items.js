@@ -4,7 +4,7 @@ function updateUniqueItems(map) {
       if (map.get(key) === 1) map.set(key, 100);
     }
 
-  return map;
+    return map;
   }
 
   throw Error('Cannot process');
