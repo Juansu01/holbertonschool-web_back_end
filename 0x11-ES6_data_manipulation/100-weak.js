@@ -11,4 +11,4 @@ function queryAPI(endpoint) {
   }
 }
 
-export default queryAPI;
+export { queryAPI, weakMap };
