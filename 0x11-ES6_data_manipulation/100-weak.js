@@ -1,17 +1,14 @@
 export const weakMap = new WeakMap();
 
 function queryAPI(endpoint) {
-  let timesCalled = weakMap.get(endpoint) || 0;
+  if (weakMap.has(endpoint)) {
+    const query = weakMap.get(endpoint);
 
-  timesCalled += 1;
-
-  weakMap.set(endpoint, timesCalled);
-
-  if (timesCalled >= 5) {
-    throw new Error('Endpoint load is high');
+    if (query >= 4) throw new Error('Endpoint load is high');
+    weakMap.set(endpoint, weakMap.get(endpoint) + 1);
+  } else {
+    weakMap.set(endpoint, 1);
   }
-
-  return timesCalled;
 }
 
 export default queryAPI;
