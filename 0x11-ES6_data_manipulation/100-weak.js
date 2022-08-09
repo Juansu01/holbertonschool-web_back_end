@@ -8,7 +8,7 @@ function queryAPI(endpoint) {
   weakMap.set(endpoint, timesCalled);
 
   if (timesCalled >= 5) {
-    throw Error('Endpoint load is high');
+    throw new Error('Endpoint load is high');
   }
 
   return timesCalled;
