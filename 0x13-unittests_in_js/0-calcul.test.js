@@ -14,4 +14,16 @@ describe('calculateNumber', function () {
     });
   });
 
+  describe('Two floats', function () {
+    it('should return 4', function () {
+      assert.strictEqual(calculateNumber(2.2, 2.1), 4);
+    });
+  });
+
+  describe('Two floats 2', function () {
+    it('should return 9', function () {
+      assert.strictEqual(calculateNumber(3.8, 4.9), 9);
+    });
+  });
+
 });
