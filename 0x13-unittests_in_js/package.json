@@ -1,0 +1,24 @@
+{
+  "name": "0x13-unittests_in_js",
+  "version": "1.0.0",
+  "description": "- How to use Mocha to write a test suite\r - How to use different assertion libraries (Node or Chai)\r - How to present long test suites\r - When and - How to use spies\r - When and - How to use stubs\r - What are hooks and when to use them\r - Unit testing with Async functions\r - How to write integration tests with a small node server",
+  "main": "0-calcul.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha"
+  },
+  "keywords": [
+    "test",
+    "mocha"
+  ],
+  "author": "Juan",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.4.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^22.17.0",
+    "mocha": "^8.2.1",
+    "sinon": "^9.2.3"
+  }
+}
