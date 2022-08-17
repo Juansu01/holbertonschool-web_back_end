@@ -16,7 +16,7 @@ describe('calculateNumber', function () {
 
   describe('No rounding divide', function () {
     it('should return 1', function () {
-      assert.equal(calculateNumber('SUBTRACT', 3, 3), 1);
+      assert.equal(calculateNumber('DIVIDE', 3, 3), 1);
     });
   });
 
