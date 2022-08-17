@@ -32,4 +32,10 @@ describe('calculateNumber', function () {
     });
   });
 
+  describe('Rounding division', function () {
+    it('should return 2', function () {
+      assert.equal(calculateNumber('DIVIDE', 3.8, 1.9), 2);
+    });
+  });
+
 });
