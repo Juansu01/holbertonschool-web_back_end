@@ -8,18 +8,6 @@ describe('calculateNumber', function () {
     });
   });
 
-  describe('SUM first round', function () {
-    it('should return 6', function () {
-      chai.expect(calculateNumber('SUM', 2.4, 4)).to.equal(6);
-    });
-  });
-
-  describe('SUM second round ', function () {
-    it('should return 6', function () {
-      chai.expect(calculateNumber('SUM', 4, 2.4)).to.equal(6);
-    });
-  });
-
   describe('SUM both round', function () {
     it('should return 6', function () {
       chai.expect(calculateNumber('SUM', 1.4, 4.5)).to.equal(6);
@@ -47,18 +35,6 @@ describe('calculateNumber', function () {
   describe('SUBTRACT both round', function () {
     it('should return -4', function () {
       chai.expect(calculateNumber('SUBTRACT', 1.4, 4.5)).to.equal(-4);
-    });
-  });
-
-  describe('DIVIDE no round', function () {
-    it('should return 2', function () {
-      chai.expect(calculateNumber('DIVIDE', 8, 4)).to.equal(2);
-    });
-  });
-
-  describe('DIVIDE first round', function () {
-    it('should return 5', function () {
-      chai.expect(calculateNumber('DIVIDE', 9.5, 2)).to.equal(5);
     });
   });
 
